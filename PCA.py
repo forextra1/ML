@@ -143,5 +143,9 @@ print(f"optimal number of components for 95% var: {n_components_95}")
 
 
 
+#
+
+
+
 
 
