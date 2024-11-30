@@ -7,7 +7,7 @@ from sklearn.utils import shuffle
 from skimage.morphology import erosion, dilation, disk
 from sklearn.metrics import jaccard_score, f1_score
 
-slices = [60, 80, 111, 117]
+sl = []
 
 for slice_index in slices:
     ct_slice = ct_volume[slice_index, :, :]
@@ -191,4 +191,3 @@ for slice_index in slices:
     plt.axis('off')
     plt.show()
 
-    print("\n_________________________________________next_________________________________________\n")
