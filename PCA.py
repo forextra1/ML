@@ -63,7 +63,8 @@ accuracy = accuracy_score(y_test, y_pred)
 
 # Step 7: Output results
 print(f'Accuracy of the model: {accuracy * 100:.2f}%')
-
+# Optional: Explore the explained variance of each principal component
+print(f'Explained variance ratio: {pca.explained_variance_ratio_}')
 
 
 #and -------------------> 
@@ -88,5 +89,4 @@ cumulative_variance = explained_variance_ratio.cumsum()
 
 
 
-# Optional: Explore the explained variance of each principal component
-print(f'Explained variance ratio: {pca.explained_variance_ratio_}')
+
