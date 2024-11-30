@@ -91,7 +91,51 @@ cumulative_variance = explained_variance_ratio.cumsum()
 '''
 
 
+'''
+PCA is a technique used to reduce the dimensionality of a dataset while preserving as much variance as possible. Here's how it works:
 
+PCA takes your original features and combines them in a new way.
+The new features (called principal components) are linear combinations of the original features.
+The first principal component captures the most variance (the most "spread" in the data).
+The second principal component captures the second most variance, but is uncorrelated with the first.
+
+explained variance ratio: This is important because it tells you how much of the original data's variance is captured by each principal component.
+
+After PCA has been applied, we often want to know how much total variance is explained by a certain number of principal components.
+This is where cumulative variance comes into play:
+The cumulative explained variance is the running total of the variance explained by the first few principal components.
+
+
+'''
+
+from sklearn.decomposition import PCA
+
+
+scaler = StandardScaler()
+x_scaled = scaler.fit_transform(df.iloc[:, :-1])  
+
+pca = PCA().fit(x_scaled)
+
+explained_variance_ratio = pca.explained_variance_ratio_
+
+cumulative_variance = explained_variance_ratio.cumsum()
+
+#>
+
+plt.figure(figsize=(8, 6))
+plt.plot(range(1, len(cumulative_variance) + 1), cumulative_variance, marker='o', linestyle='--')
+plt.xlabel('number of components')
+plt.ylabel('cumulative explained var')
+plt.title('cumulative explained var vs number of components')
+plt.axhline(y=0.90, color='r')  # 90%  var
+plt.axhline(y=0.95, color='g')  #  95%  var
+plt.show()
+
+n_components_90 = (cumulative_variance >= 0.90).argmax() + 1
+n_components_95 = (cumulative_variance >= 0.95).argmax() + 1
+
+print(f"optimal number of components for 90% var: {n_components_90}")
+print(f"optimal number of components for 95% var: {n_components_95}")
 
 
 
