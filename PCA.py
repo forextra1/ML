@@ -22,6 +22,9 @@ print(f'Explained variance ratio: {pca.explained_variance_ratio_}')
 
 
 
+
+
+
 #and ------------>>  
 
 # Import necessary libraries
@@ -65,6 +68,14 @@ accuracy = accuracy_score(y_test, y_pred)
 print(f'Accuracy of the model: {accuracy * 100:.2f}%')
 # Optional: Explore the explained variance of each principal component
 print(f'Explained variance ratio: {pca.explained_variance_ratio_}')
+
+
+
+
+
+
+
+
 
 
 #and -------------------> 
